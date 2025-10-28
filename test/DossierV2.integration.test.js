@@ -93,9 +93,9 @@ describe("DossierV2 Integration Tests", function () {
     });
   });
 
-  describe("Whistleblower Workflow", function () {
-    it("Should handle whistleblower protection with immediate release option", async function () {
-      // Whistleblower creates dossier with corporate fraud evidence
+  describe("Source Workflow", function () {
+    it("Should handle source protection with immediate release option", async function () {
+      // Source creates dossier with corporate fraud evidence
       await contract.connect(source).createDossier(
         "Corporate Fraud Evidence",
         "Illegal accounting practices documentation",
@@ -110,7 +110,7 @@ describe("DossierV2 Integration Tests", function () {
         await contract.connect(source).checkIn(0);
       }
 
-      // Whistleblower discovers immediate threat and decides to release
+      // Source discovers immediate threat and decides to release
       await contract.connect(source).releaseNow(0);
 
       // Verify immediate release
@@ -123,7 +123,7 @@ describe("DossierV2 Integration Tests", function () {
       expect(shouldStayEncrypted).to.be.false;
     });
 
-    it("Should handle whistleblower aborting mission", async function () {
+    it("Should handle source aborting mission", async function () {
       // Create dossier
       await contract.connect(source).createDossier(
         "Classified Information",
