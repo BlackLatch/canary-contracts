@@ -109,32 +109,12 @@ module.exports = {
       blockGasLimit: 30000000,
       allowUnlimitedContractSize: true
     },
-    polygonAmoy: {
-      url: process.env.POLYGON_AMOY_RPC_URL || `https://polygon-amoy.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`,
-      chainId: 80002,
-      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
-      gas: "auto",
-      gasPrice: "auto"
-    },
-    polygon: {
-      url: process.env.POLYGON_RPC_URL || `https://polygon-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`,
-      chainId: 137,
-      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
-      gas: "auto",
-      gasPrice: "auto"
-    },
     statusSepolia: {
       url: 'https://public.sepolia.rpc.status.network',
       chainId: 1660990954,
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
       gas: "auto",
       gasPrice: "auto"
-    }
-  },
-  etherscan: {
-    apiKey: {
-      polygonAmoy: process.env.POLYGONSCAN_API_KEY || "",
-      polygon: process.env.POLYGONSCAN_API_KEY || ""
     }
   },
   paths: {
