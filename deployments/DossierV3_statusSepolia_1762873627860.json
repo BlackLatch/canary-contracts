@@ -1,0 +1,10 @@
+{
+  "network": "status-sepolia",
+  "chainId": 1660990954,
+  "address": "0x1e42d08E70cB4b91A3F01069521fa0be9F9e176f",
+  "deployer": "0xb20E5F5c5b068F5d5c1EB2E4dBe17Ff0CdFD0587",
+  "timestamp": "2025-11-11T15:07:07.860Z",
+  "txHash": "0x3bbebd6e54de23e03f67af8c2be6d45490d13bfa16d896be295c6828a0d48718",
+  "blockNumber": 12488630,
+  "explorerUrl": "https://sepoliascan.status.network/address/0x1e42d08E70cB4b91A3F01069521fa0be9F9e176f"
+}

@@ -15,19 +15,16 @@ task("deploy-status", "Deploy DossierV3 to Status Network Sepolia")
 
     const balance = await deployer.provider.getBalance(deployer.address);
     console.log("Account balance:", hre.ethers.formatEther(balance), "ETH");
-
-    if (balance === 0n) {
-      console.error("❌ No ETH balance! Note: Status Network uses gasless transactions via RLN rate-limiting.");
-      console.error("   You may still need a small amount of ETH for deployment.");
-      console.error("   Get test ETH from a Sepolia faucet.");
-      return;
-    }
+    console.log("Note: Status Network uses gasless transactions via RLN rate-limiting.\n");
 
     console.log("\n📦 Compiling contract...");
     const DossierV3 = await hre.ethers.getContractFactory("CanaryDossierV3");
 
     console.log("\n📝 Deploying contract...");
-    const contract = await DossierV3.deploy();
+    const contract = await DossierV3.deploy({
+      gasPrice: 0,
+      gasLimit: 10000000
+    });
     await contract.waitForDeployment();
     const contractAddress = await contract.getAddress();
 
