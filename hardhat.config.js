@@ -6,9 +6,9 @@ require("dotenv").config();
 const fs = require("fs");
 
 // Custom task to deploy to Status Network
-task("deploy-status", "Deploy DossierV2 to Status Network Sepolia")
+task("deploy-status", "Deploy DossierV3 to Status Network Sepolia")
   .setAction(async (taskArgs, hre) => {
-    console.log("\n🚀 Deploying CanaryDossierV2 to Status Network Sepolia...\n");
+    console.log("\n🚀 Deploying CanaryDossierV3 to Status Network Sepolia...\n");
 
     const [deployer] = await hre.ethers.getSigners();
     console.log("Deploying with account:", deployer.address);
@@ -24,10 +24,10 @@ task("deploy-status", "Deploy DossierV2 to Status Network Sepolia")
     }
 
     console.log("\n📦 Compiling contract...");
-    const DossierV2 = await hre.ethers.getContractFactory("CanaryDossierV2");
+    const DossierV3 = await hre.ethers.getContractFactory("CanaryDossierV3");
 
     console.log("\n📝 Deploying contract...");
-    const contract = await DossierV2.deploy();
+    const contract = await DossierV3.deploy();
     await contract.waitForDeployment();
     const contractAddress = await contract.getAddress();
 
@@ -54,7 +54,7 @@ task("deploy-status", "Deploy DossierV2 to Status Network Sepolia")
       fs.mkdirSync("./deployments");
     }
 
-    const filename = `./deployments/DossierV2_statusSepolia_${Date.now()}.json`;
+    const filename = `./deployments/DossierV3_statusSepolia_${Date.now()}.json`;
     fs.writeFileSync(filename, JSON.stringify(deploymentInfo, null, 2));
     console.log("\n💾 Deployment info saved to:", filename);
 
@@ -75,7 +75,7 @@ task("deploy-status", "Deploy DossierV2 to Status Network Sepolia")
         envLine
       );
     } else {
-      envContent += `\n# DossierV2 Contract on Status Network (Deployed ${new Date().toISOString()})\n${envLine}\n`;
+      envContent += `\n# DossierV3 Contract on Status Network (Deployed ${new Date().toISOString()})\n${envLine}\n`;
     }
 
     fs.writeFileSync(envFile, envContent);
